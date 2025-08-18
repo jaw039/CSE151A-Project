@@ -87,7 +87,11 @@ CSE151A-Project/
 ## License
 This project is for educational purposes. Please respect Kaggle's terms of service and the original dataset license.
 
-# Question 2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
+### Question 1: How many observations does your dataset have?
+<img width="342" height="728" alt="image" src="https://github.com/user-attachments/assets/348b2dee-d488-4ff2-93b1-b71bf5563c89" />
+
+
+### Question 2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
 <img width="868" height="763" alt="image" src="https://github.com/user-attachments/assets/faeaaba7-ca3b-445e-8d05-0c73fa28ab20" />
 
 Dataset Column Description
@@ -116,7 +120,7 @@ This engineered 'fantasy_points' column will be a continuous variable on a ratio
 and it will be the value our model aims to predict for future player performance.
 
 
-# Question 3: Do you have missing and duplicate values in your dataset?
+### Question 3: Do you have missing and duplicate values in your dataset?
 <img width="1265" height="808" alt="image" src="https://github.com/user-attachments/assets/8181a913-540b-4180-848e-2b2a10c1e98b" />
 
 
