@@ -86,3 +86,42 @@ CSE151A-Project/
 
 ## License
 This project is for educational purposes. Please respect Kaggle's terms of service and the original dataset license.
+
+# Question 2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
+<img width="868" height="763" alt="image" src="https://github.com/user-attachments/assets/faeaaba7-ca3b-445e-8d05-0c73fa28ab20" />
+
+Dataset Column Description
+Our dataset is a comprehensive collection of NFL statistics from 1999-2022, comprising 215,243 total observations distributed across eight CSV files. The data have two primary axes: (weekly vs. yearly) and (player vs. team), which is ideal for our goal of building a fantasy football autodrafter.
+
+Player-Level Data (Primary Focus):
+
+Weekly Offensive Stats (58,629 observations): This is the most critical dataset for our project. Each observation represents a single player's offensive performance in one game. 
+Yearly Offensive Stats (7,133 observations): Adding all weekly data (16 - 17 games) into a full-season summary for each player, useful for establishing a baseline performance. 
+Defensive Stats (Weekly & Yearly): While our primary focus is offense, the 117,993 weekly and 16,148 yearly defensive observations will be used for drafting team defenses (D/ST)
+Team-Level Data (Contextual): The team-level files provide broader context on team tendencies (e.g., pass-heavy vs. run-heavy offenses) that can influence a player's opportunity and projected output.
+
+<img width="946" height="332" alt="image" src="https://github.com/user-attachments/assets/7dfedeea-2b04-4d59-9168-4ab59cc35ee4" />
+For our fantasy football autodrafter, the dataset does not have a pre-made target column. 
+Our target variable will be 'fantasy_points', which we will need to create. 
+How it will be created: 
+We will calculate it based on standard fantasy scoring rules applied to the continuous variables. 
+For example, in a Points Per Reception (PPR) league: 
+  - 1 point per reception ('receptions') 
+  - 0.1 points per rushing/receiving yard ('rushing_yards', 'receiving_yards')
+  - 6 points per rushing/receiving touchdown ('rushing_tds', 'receiving_tds')
+  - 4 points per passing touchdown ('passing_tds')
+  - -2 points per interception thrown ('interceptions')
+
+This engineered 'fantasy_points' column will be a continuous variable on a ratio scale, 
+and it will be the value our model aims to predict for future player performance.
+
+
+# Question 3: Do you have missing and duplicate values in your dataset?
+<img width="1265" height="808" alt="image" src="https://github.com/user-attachments/assets/8181a913-540b-4180-848e-2b2a10c1e98b" />
+
+
+<img width="1032" height="802" alt="image" src="https://github.com/user-attachments/assets/1d511e7f-323f-4d72-a768-5b356a01f08a" />
+
+
+<img width="1133" height="552" alt="image" src="https://github.com/user-attachments/assets/aecc071d-ea99-4385-a042-f0821d3430a5" />
+
