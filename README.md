@@ -87,11 +87,13 @@ CSE151A-Project/
 ## License
 This project is for educational purposes. Please respect Kaggle's terms of service and the original dataset license.
 
-### Question 1: How many observations does your dataset have?
+# Question 4: Data Exploration
+
+### 4.1: How many Observations does your data have?
 <img width="342" height="728" alt="image" src="https://github.com/user-attachments/assets/348b2dee-d488-4ff2-93b1-b71bf5563c89" />
 
 
-### Question 2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
+### 4.2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
 <img width="868" height="763" alt="image" src="https://github.com/user-attachments/assets/faeaaba7-ca3b-445e-8d05-0c73fa28ab20" />
 
 Dataset Column Description
@@ -121,12 +123,59 @@ This engineered 'fantasy_points' column will be a continuous variable on a ratio
 and it will be the value our model aims to predict for future player performance.
 
 
-### Question 3: Do you have missing and duplicate values in your dataset?
+### 4.3: Do you have missing and duplicate values in your dataset?
 <img width="1265" height="808" alt="image" src="https://github.com/user-attachments/assets/8181a913-540b-4180-848e-2b2a10c1e98b" />
 
+# Question 5: Data Plots
+
+### Plot your data with various types of charts like bar charts, pie charts, scatter plots etc. and clearly explain the plots.
 
 <img width="1032" height="802" alt="image" src="https://github.com/user-attachments/assets/1d511e7f-323f-4d72-a768-5b356a01f08a" />
 
+**Description for the Pie Chart (Position Distribution)**
+This pie chart illustrates the distribution of players across different positions within our dataset. From a fantasy drafting perspective, this visualization is key to understanding positional value. For example, positions with smaller slices, like Running Back or Tight End, demonstrates that theres less talents/players available at those positions. This increases the value of drafting those elite players at those positions, as the drop-off in production to the next available player is much steeper. Our autodrafter will use this information to prioritize drafting top-tier talent at these premium positions early on, securing a significant advantage over our opponents.
 
 <img width="1133" height="552" alt="image" src="https://github.com/user-attachments/assets/aecc071d-ea99-4385-a042-f0821d3430a5" />
+**Description for the Bar Chart (Fantasy Points Consistency)**
+This bar chart displays the consistency of fantasy scoring by position, measured by the standard deviation of weekly points. A lower bar signifies more consistent, predictable scoring, while a higher bar indicates more "boom-or-bust" potential. For a successful fantasy draft, balancing high-upside players with a reliable, high-floor team is essential.
 
+Lower Bars (More Consistent): Positions like Quarterback often show lower variance, providing a stable scoring floor each week. These are safer, more dependable assets.
+Higher Bars (Less Consistent): Positions like Wide Receiver or Tight End can have higher variance, meaning their weekly scores fluctuate more. 
+
+Our autodrafter will leverage this insight to manage risk. It will prioritize drafting players from more consistent positions to build a reliable core, while strategically targeting less consistent, high-upside players to gain a competitive edge in weekly matchups. This balance is fundamental to assessing true positional value.
+
+### Question 6: How will you preprocess your data? Handle data imbalance if needed. You should only explain (do not perform pre-processing as that is in MS3) this in your README.md file and link your Jupyter notebook to it. All code and  Jupyter notebooks have be uploaded to your repo. (3 points)
+
+Our preprocessing approach is designed to transform raw weekly player statistics into meaningful, position-specific performance metrics. The main goal is to identify players with consistent and high production for predictive modeling.
+
+**1. Aggregation of Weekly Data**
+We start by parsing the weekly offense dataset.
+
+For each player, we compute average performance metrics per week within their respective position (RB, WR, TE, QB).
+
+This allows us to rank players by typical production levels for each position.
+
+**2. Reliability Index**
+Using data from the previous season, we calculate the standard deviation of each player’s weekly scores.
+
+Players with low standard deviations and high average performance are considered reliable performers.
+
+This creates a reliability index for each player, which helps quantify consistency in scoring.
+
+**3. Position-Specific Normalization**
+Each position has unique performance metrics (e.g., rushing yards for RBs, receiving yards for WRs/TEs, passing yards for QBs).
+
+Metrics are normalized per position to account for natural differences in production scales and ensure fair comparison across players.
+
+**4. Additional Factors**
+Player age, seasons played, and general position trends (e.g., typical weekly output) are incorporated.
+
+This helps adjust rankings for players who may be improving, aging, or trending differently relative to their peers.
+
+**5. Handling Data Imbalance**
+
+Some positions (e.g., TEs) or metrics may have fewer observations than others.
+
+While we do not perform explicit oversampling or undersampling at this stage, we note these imbalances for consideration in downstream modeling.
+
+Aggregating metrics and computing normalized scores per position partially mitigates imbalance issues by comparing players within the same role.
