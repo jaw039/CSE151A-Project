@@ -149,6 +149,7 @@ Our autodrafter will leverage this insight to manage risk. It will prioritize dr
 Our preprocessing approach is designed to transform raw weekly player statistics into meaningful, position-specific performance metrics. The main goal is to identify players with consistent and high production for predictive modeling.
 
 **1. Aggregation of Weekly Data**
+
 We start by parsing the weekly offense dataset.
 
 For each player, we compute average performance metrics per week within their respective position (RB, WR, TE, QB).
@@ -156,6 +157,7 @@ For each player, we compute average performance metrics per week within their re
 This allows us to rank players by typical production levels for each position.
 
 **2. Reliability Index**
+
 Using data from the previous season, we calculate the standard deviation of each player’s weekly scores.
 
 Players with low standard deviations and high average performance are considered reliable performers.
@@ -163,11 +165,13 @@ Players with low standard deviations and high average performance are considered
 This creates a reliability index for each player, which helps quantify consistency in scoring.
 
 **3. Position-Specific Normalization**
+
 Each position has unique performance metrics (e.g., rushing yards for RBs, receiving yards for WRs/TEs, passing yards for QBs).
 
 Metrics are normalized per position to account for natural differences in production scales and ensure fair comparison across players.
 
 **4. Additional Factors**
+
 Player age, seasons played, and general position trends (e.g., typical weekly output) are incorporated.
 
 This helps adjust rankings for players who may be improving, aging, or trending differently relative to their peers.
