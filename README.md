@@ -105,6 +105,7 @@ Defensive Stats (Weekly & Yearly): While our primary focus is offense, the 117,9
 Team-Level Data (Contextual): The team-level files provide broader context on team tendencies (e.g., pass-heavy vs. run-heavy offenses) that can influence a player's opportunity and projected output.
 
 <img width="946" height="332" alt="image" src="https://github.com/user-attachments/assets/7dfedeea-2b04-4d59-9168-4ab59cc35ee4" />
+
 For our fantasy football autodrafter, the dataset does not have a pre-made target column. 
 Our target variable will be 'fantasy_points', which we will need to create. 
 How it will be created: 
