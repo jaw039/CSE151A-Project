@@ -146,23 +146,17 @@ Our autodrafter will leverage this insight to manage risk. It will prioritize dr
 
 ### Question 6: How will you preprocess your data? Handle data imbalance if needed. You should only explain (do not perform pre-processing as that is in MS3) this in your README.md file and link your Jupyter notebook to it. All code and  Jupyter notebooks have be uploaded to your repo. (3 points)
 
-Our preprocessing approach is designed to transform raw weekly player statistics into meaningful, position-specific performance metrics. The main goal is to identify players with consistent and high production for predictive modeling.
+Our preprocessing approach is designed to transform raw weekly player statistics into meaningful, position-specific performance metrics. The main goal is to calculate the Value over Replacement Player, for each player at every position. For example, a top tier Quarterback may have the highest number of raw points, but taking a quarterback in the first round is usually not the best strategy since there are many quarterbacks who perform well each week since the position is the most consistent in the sport usually. Therefore, choosing a top tier running back or Wide Receiver in the first round is the best, since their VORP, or value over a replacement player is ultimately the best factor of who you should draft first. 
+
+The best fantasy team is one that is well balanced at each position, and while nobody can get all the best players on one team, the best approach is to build a balanced team that can consistently produce on a week to week basis.
 
 **1. Aggregation of Weekly Data**
 
-We start by parsing the weekly offense dataset.
 
-For each player, we compute average performance metrics per week within their respective position (RB, WR, TE, QB).
 
-This allows us to rank players by typical production levels for each position.
+**2. VORP Calculation**
 
-**2. Reliability Index**
 
-Using data from the previous season, we calculate the standard deviation of each player’s weekly scores.
-
-Players with low standard deviations and high average performance are considered reliable performers.
-
-This creates a reliability index for each player, which helps quantify consistency in scoring.
 
 **3. Position-Specific Normalization**
 
