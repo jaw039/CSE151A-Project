@@ -152,23 +152,19 @@ The best fantasy team is one that is well balanced at each position, and while n
 
 **1. Aggregation of Weekly Data**
 
-
+First we want to aggregate the weekly data from the previous season and see which players performed the best, and rank them. This will help us determine what players should be drafted first for each position.
 
 **2. VORP Calculation**
 
-
+Once we are able to calculate the weekly data, we need to calculate the VORP of each of the players. Since VORP is based on the worst possible outcome, we want to find the option that exists just outside the boundary of players to be drafted. So if we have a 12 person league, the Replacement player(s) would be the 13th best quarterback (since 1 QB can start per week), the 25th best Running back (Since you can play 2 RBs per week), the 37th best Wide Receiver (3 WRs can play per week), The 25th best Tight End(Since 2 TEs can play per week), and the 13th best Kicker (Since 1 K can start per week). Additionally, we will add in a FLEX position and 2 bench slots where players can add players of any position. The VORP for these players will be calculated for every position and ranked against each other. 
 
 **3. Position-Specific Normalization**
 
-Each position has unique performance metrics (e.g., rushing yards for RBs, receiving yards for WRs/TEs, passing yards for QBs).
-
-Metrics are normalized per position to account for natural differences in production scales and ensure fair comparison across players.
+We calculate the VORP for each position specifically, and store it as an additional feature for the data. Since VORP is specific to each position and number of players in the league, we don't need to normalize the data specific to each position. 
 
 **4. Additional Factors**
 
-Player age, seasons played, and general position trends (e.g., typical weekly output) are incorporated.
-
-This helps adjust rankings for players who may be improving, aging, or trending differently relative to their peers.
+We want to also incorporate some kind of feature to account for players being on different teams. Since there are 32 different NFL teams, We want to account for this, and distribute players on our team accordingly so that one team doesn't have too many players from the same team. The reason for this is that if you're playing an opponent on the week that a team you have multiple players on has a bye, then you are starting players who will have 0 production. We want to avoid this by having players of different teams in bench positions on your team.
 
 **5. Handling Data Imbalance**
 
