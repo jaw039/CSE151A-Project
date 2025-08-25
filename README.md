@@ -4,6 +4,8 @@
 - **Source**: [NFL Stats (1999-2022) on Kaggle](https://www.kaggle.com/datasets/philiphyde1/nfl-stats-1999-2022)
 - **Description**: Comprehensive NFL player and team statistics covering weekly and yearly data from 1999 to 2022
 
+# Links
+All code to generate the graphs in this ReadME is in firstModel.ipynb
 
 # Major Preprocessing
 There are many different positions and they all require a different set of values to calculate their fantasy value/projections, so we decided to just focus on one and try to get our supervised learning model to predict projected values for the next season based on previous season's values. 
