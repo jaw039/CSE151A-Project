@@ -20,6 +20,7 @@ The above is a graph depicting the relationship of previous year's rushing yards
 The above is a grid of graphs depicting the relationship between snap count (how many times a player was on the field over the course of the season), Rushing Yards, Rushing Touchdowns, and Yards Per Carry (How many total Yards / How many rushing attempts). Many of these variables have a vaguely linear correlation with 2024 fantasy points, except for Yards Per Carry, which is to be expected as it can be biased towards small sample sizes. 
 
 <img width="1191" height="800" alt="image" src="https://github.com/user-attachments/assets/7c678fbc-215d-4b44-85d8-d05497e3b7e9" />
+# First Model
 We used Support Vector Regression to try and find a prediction line to fit the data we had, in order to predict the stats of a player the next season depending on the various stats we had calculated from the previous season. The test set size was 20% of our total set of data of running backs. It also had notable outliers including Christian McCaffrey, and Chase Brown, as well as Saquon Barkley who saw one of the best historical seasons at Running Back after signing with a new team that catered much better to his strengths than his previous team.
 The error reportings are as follows: 
 Train RMSE: 69.9235350510531
@@ -27,6 +28,7 @@ Test RMSE: 97.70489967679828
 Train R2: 0.47908500488083483
 Test R2: -0.025677153402659858
 
+# Tweaking our Model
 The Test RMSE seemed very high, and this is a sign that the model isn't well trained, since it is significantly higher than our Training RMSE, so we decided to go and tweak a few things with the model. First, we decided to only score the RB1 and RB2 on every team, which meant that we would be getting rid of many of the lower performers that likely wouldn't be drafted in an 8-12 man fantasy league. This meant we'd only be keeping Running Backs who were RB1 or RB2 in both 2023 and 2024, meaning no rookies or risers would be considered. This significantly reduced the size of our dataset, but increased our model's accuracy by removing data that was skewing our model. 
 
 <img width="1200" height="816" alt="image" src="https://github.com/user-attachments/assets/3945f172-d99e-4f55-addf-d1edd8347a69" />
@@ -43,4 +45,7 @@ Test RMSE: 71.48681447974681
 Train R2: 0.2354454736847571
 Test R2: 0.28630580305958364
 
-While these values were lower than our previous hyperparameters, the samples were all very close to the line and saw very few outliers, so we decided to tweak the sample and found that the RMSE was increased drastically for this model when we did. We decided to settle on the parameters {'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'} as it was the one that best fit our data.
+While these values were lower than our previous hyperparameters, the samples were all very close to the line and saw very few outliers, so we decided to tweak the sample and found that the RMSE was increased drastically for this model when we did. We decided to settle on the parameters {'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'} as it was the one that best fit our data. We think that due to the relatively small sample size, fluid nature of the sport and rosters, injuries, scheme fits, coaching changes, offensive line play, and more, statistical modeling for one position in isolation is very difficult to find a reliable prediction for. The data will almost always be underfitted, since sports are a very small sample space and see statistical anomalies happen very often, especially in a 17 game season like the NFL. The position we chose may also be at fault due to it being a much more injury prone position, as well as being much more reliant on other factors such as offensive line blocking, defensive run stopping, and more. When predicting stats for other positions, we may not see this much variance in season to season production, and may find it much more reliable in terms of data. 
+
+# Conclusions
+
