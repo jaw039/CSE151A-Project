@@ -173,3 +173,9 @@ Some positions (e.g., TEs) or metrics may have fewer observations than others.
 While we do not perform explicit oversampling or undersampling at this stage, we note these imbalances for consideration in downstream modeling.
 
 Aggregating metrics and computing normalized scores per position partially mitigates imbalance issues by comparing players within the same role.
+
+
+# Major Preprocessing
+Our data has 393 columns/features for our weekly offensive stats per player, so to narrow down what we need, I decided to ask ChatGPT, which features are best to predict future performance. 
+<img width="766" height="816" alt="image" src="https://github.com/user-attachments/assets/0731ee22-e245-4d02-a334-32e7dec2daa7" />
+So, I decided to drop all the redundant columns that had little to no use.
