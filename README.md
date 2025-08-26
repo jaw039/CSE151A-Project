@@ -1,11 +1,14 @@
-# CSE151A-Project — NFL Stats (1999–2022)
+# CSE151A-Project — NFL Fantasy Football Point Projections
 
 ## Dataset
 - **Source**: [NFL Stats (1999-2022) on Kaggle](https://www.kaggle.com/datasets/philiphyde1/nfl-stats-1999-2022)
 - **Description**: Comprehensive NFL player and team statistics covering weekly and yearly data from 1999 to 2022
 
-# Links
-All code to generate the graphs in this ReadME is in firstModel.ipynb
+
+## Introduction
+Every year, millions of Americans get ready to participate in a tradition that pits them against their friends, family and loved ones. This is of course, Fantasy Football, a competition to see who can draft the best team and win a fictional league, based off week to week performance of real NFL players. Due to the short lived nature of NFL careers, year to year changes in coaching, drafted players, rosters, and player roles, it is oftentimes impossible to predict the state of football year after year. Yet, despite that, we tried to do it, using statistical analysis and machine learning to predict how to draft the best team possible. Having a good predictive mode for fantasy football is used in many autodrafters for leagues online, but predictive analysis and statistical modeling is used for college players as well, to see how they may or may not translate to the next level. This is important to teams, because they may be able to find undervalued players in the draft that they can get for a "steal" because other teams passed, not knowing their true value, or it can be used to evaluate the "bust" potential of a player who may be overvalued due to a skillset that won't translate well to the professional level.
+
+
 
 # Major Preprocessing
 There are many different positions and they all require a different set of values to calculate their fantasy value/projections, so we decided to just focus on one and try to get our supervised learning model to predict projected values for the next season based on previous season's values. 
