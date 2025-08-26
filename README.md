@@ -89,21 +89,75 @@ CSE151A-Project/
 
 # Data Exploration
 
+### 4.1: How many Observations does your data have?
+<img width="342" height="728" alt="image" src="https://github.com/user-attachments/assets/348b2dee-d488-4ff2-93b1-b71bf5563c89" />
+
+
+### 4.2: Describe all columns in your dataset their scales and data distributions. Describe the categorical and continuous variables in your dataset. Describe your target column and if you are using images plot some example classes of the images.
+<img width="868" height="763" alt="image" src="https://github.com/user-attachments/assets/faeaaba7-ca3b-445e-8d05-0c73fa28ab20" />
+
+Dataset Column Description
+Our dataset is a comprehensive collection of NFL statistics from 1999-2022, comprising 215,243 total observations distributed across eight CSV files. The data have two primary axes: (weekly vs. yearly) and (player vs. team), which is ideal for our goal of building a fantasy football autodrafter.
+
+Player-Level Data (Primary Focus):
+
+Weekly Offensive Stats (58,629 observations): This is the most critical dataset for our project. Each observation represents a single player's offensive performance in one game. 
+Yearly Offensive Stats (7,133 observations): Adding all weekly data (16 - 17 games) into a full-season summary for each player, useful for establishing a baseline performance. 
+Defensive Stats (Weekly & Yearly): While our primary focus is offense, the 117,993 weekly and 16,148 yearly defensive observations will be used for drafting team defenses (D/ST)
+Team-Level Data (Contextual): The team-level files provide broader context on team tendencies (e.g., pass-heavy vs. run-heavy offenses) that can influence a player's opportunity and projected output.
+
+<img width="946" height="332" alt="image" src="https://github.com/user-attachments/assets/7dfedeea-2b04-4d59-9168-4ab59cc35ee4" />
+
+For our fantasy football autodrafter, the dataset does not have a pre-made target column. 
+Our target variable will be 'fantasy_points', which we will need to create. 
+How it will be created: 
+We will calculate it based on standard fantasy scoring rules applied to the continuous variables. 
+For example, in a Points Per Reception (PPR) league: 
+  - 1 point per reception ('receptions') 
+  - 0.1 points per rushing/receiving yard ('rushing_yards', 'receiving_yards')
+  - 6 points per rushing/receiving touchdown ('rushing_tds', 'receiving_tds')
+  - 4 points per passing touchdown ('passing_tds')
+  - -2 points per interception thrown ('interceptions')
+
+This engineered 'fantasy_points' column will be a continuous variable on a ratio scale, 
+and it will be the value our model aims to predict for future player performance.
+
+
+### 4.3: Do you have missing and duplicate values in your dataset?
+<img width="1265" height="808" alt="image" src="https://github.com/user-attachments/assets/8181a913-540b-4180-848e-2b2a10c1e98b" />
+
+# Question 5: Data Plots
+
+### Plot your data with various types of charts like bar charts, pie charts, scatter plots etc. and clearly explain the plots. 
+
+TODO: ADD CORRELATION MATRIX USING SEABORN BETWEEN CATEGORICAL VARIABLES FOR RB, QB, WR
+
+<img width="1032" height="802" alt="image" src="https://github.com/user-attachments/assets/1d511e7f-323f-4d72-a768-5b356a01f08a" />
+
+**Description for the Pie Chart (Position Distribution)**
+This pie chart illustrates the distribution of players across different positions within our dataset. From a fantasy drafting perspective, this visualization is key to understanding positional value. For example, positions with smaller slices, like Running Back or Tight End, demonstrates that theres less talents/players available at those positions. This increases the value of drafting those elite players at those positions, as the drop-off in production to the next available player is much steeper. Our autodrafter will use this information to prioritize drafting top-tier talent at these premium positions early on, securing a significant advantage over our opponents.
+
+<img width="1133" height="552" alt="image" src="https://github.com/user-attachments/assets/aecc071d-ea99-4385-a042-f0821d3430a5" />
+**Description for the Bar Chart (Fantasy Points Consistency)**
+This bar chart displays the consistency of fantasy scoring by position, measured by the standard deviation of weekly points. A lower bar signifies more consistent, predictable scoring, while a higher bar indicates more "boom-or-bust" potential. For a successful fantasy draft, balancing high-upside players with a reliable, high-floor team is essential.
+
+Lower Bars (More Consistent): Positions like Quarterback often show lower variance, providing a stable scoring floor each week. These are safer, more dependable assets.
+Higher Bars (Less Consistent): Positions like Wide Receiver or Tight End can have higher variance, meaning their weekly scores fluctuate more. 
+
+Our autodrafter will leverage this insight to manage risk. It will prioritize drafting players from more consistent positions to build a reliable core, while strategically targeting less consistent, high-upside players to gain a competitive edge in weekly matchups. This balance is fundamental to assessing true positional value.
+
 # Major Preprocessing
-There are many different positions and they all require a different set of values to calculate their fantasy value/projections, so we decided to just focus on one and try to get our supervised learning model to predict projected values for the next season based on previous season's values. 
 
-We decided to go with the Running Back position, as it is one of the shortest lived positions in the NFL, but one of the most valuable in fantasy, due to the running back getting rushes, receptions, rushing TDs, receiving TDs, fumbles, and lots of snaps on offense. We figured that if we were able to generalize the regression model for this position, then being able to do the same for other positions wouldn't be as challenging.
+Our first step in preprocessing was narrowing down our data to the 2023 and 2024 seasons. This was done by setting the dataframe to only include all values where the season was 2023 or 2024. We did this in order to train and evaluate our model on the most recent, and therefore most relevant data. Next, we decided to remove all playoff and postseason statistics. Since this is for Fantasy Football, the regular season is all that matters and playoffs have no bearing on your team performance, so 
+we filtered the dataframe further, selecting only "season type" as "regular". 
 
-For Our Preprocessing, we just filtered the yearly offense stats to the running back position, and removed all irrelevant columns, keeping only the player name, the season, total rushing yards per season, total rushing touchdowns per season, total snaps on offense per season, and Yards Per Carry per season. Additionally, we had to filter by season type, and remove all Post Season stats since they don't factor into fantasy football and only the regular season does. After this was done, we were ready to begin our model training based on our data.
+After doing this, we checked our data for duplicates and null entries, and found some null entries in the "yards per carry" column, so we initialized them with 0s, meaning the player had 0 yards per carry, or didn't have any rushing attempts.
 
-<img width="1070" height="632" alt="image" src="https://github.com/user-attachments/assets/434ecccc-2a20-4b6e-8943-3b0d5e8b040a" />
+Since our model was predicting fantasy output from the previous season's performance, we decided for running backs, to keep the rushing yards, rushing touchdowns, yards per carry, and snaps played on offense as our indicator values for 2023, and use 2024's fantasy points output as our value to be predicted/ dependent variable. We plotted the charts below for those variables:
+<img width="1062" height="756" alt="image" src="https://github.com/user-attachments/assets/f71a5eb2-8f19-42cc-b391-9d9f3a51a131" />
 
-The above is a graph depicting the relationship of previous year's rushing yards to the fantasy points for the following year. We can see a linear trend in the data with lots of variance. Some notable outliers in this include Christian McCaffrey, who suffered a patellar tendon injury and was unable to play for much of the season, despite having been the consensus best running back in the league the previous season due to his production as the engine of the 49ers offense. Another outlier is Chase Brown for the Cincinatti Bengals, who happened to lose their starting running back Joe Mixon in free agency in 2024 to the Houston Texans. Chase Brown saw his snap counts increase greatly as a result. Many such outliers exist, with the state of the NFL and its players in constant flux, especially at the Running Back position where talent is plenty, but careers are short lived.
 
-<img width="1062" height="756" alt="image" src="https://github.com/user-attachments/assets/8c1118bf-2546-4cb6-854f-f2abe17305e8" />
-The above is a grid of graphs depicting the relationship between snap count (how many times a player was on the field over the course of the season), Rushing Yards, Rushing Touchdowns, and Yards Per Carry (How many total Yards / How many rushing attempts). Many of these variables have a vaguely linear correlation with 2024 fantasy points, except for Yards Per Carry, which is to be expected as it can be biased towards small sample sizes. 
 
-<img width="1191" height="800" alt="image" src="https://github.com/user-attachments/assets/7c678fbc-215d-4b44-85d8-d05497e3b7e9" />
 # First Model
 We used Support Vector Regression to try and find a prediction line to fit the data we had, in order to predict the stats of a player the next season depending on the various stats we had calculated from the previous season. The test set size was 20% of our total set of data of running backs. It also had notable outliers including Christian McCaffrey, and Chase Brown, as well as Saquon Barkley who saw one of the best historical seasons at Running Back after signing with a new team that catered much better to his strengths than his previous team.
 The error reportings are as follows: 
