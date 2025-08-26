@@ -1,14 +1,93 @@
 # CSE151A-Project — NFL Fantasy Football Point Projections
 
+# Introduction
+Every year, millions of Americans get ready to participate in a tradition that pits them against their friends, family and loved ones. This is of course, Fantasy Football, a competition to see who can draft the best team and win a fictional league, based off week to week performance of real NFL players. Due to the short lived nature of NFL careers, year to year changes in coaching, drafted players, rosters, and player roles, it is oftentimes impossible to predict the state of football year after year. Yet, despite that, we tried to do it, using statistical analysis and machine learning to predict how to draft the best team possible. Having a good predictive mode for fantasy football is used in many autodrafters for leagues online, but predictive analysis and statistical modeling is used for college players as well, to see how they may or may not translate to the next level. This is important to teams, because they may be able to find undervalued players in the draft that they can get for a "steal" because other teams passed, not knowing their true value, or it can be used to evaluate the "bust" potential of a player who may be overvalued due to a skillset that won't translate well to the professional level.
+
 ## Dataset
 - **Source**: [NFL Stats (1999-2022) on Kaggle](https://www.kaggle.com/datasets/philiphyde1/nfl-stats-1999-2022)
 - **Description**: Comprehensive NFL player and team statistics covering weekly and yearly data from 1999 to 2022
 
+## Environment Setup Requirements
 
-## Introduction
-Every year, millions of Americans get ready to participate in a tradition that pits them against their friends, family and loved ones. This is of course, Fantasy Football, a competition to see who can draft the best team and win a fictional league, based off week to week performance of real NFL players. Due to the short lived nature of NFL careers, year to year changes in coaching, drafted players, rosters, and player roles, it is oftentimes impossible to predict the state of football year after year. Yet, despite that, we tried to do it, using statistical analysis and machine learning to predict how to draft the best team possible. Having a good predictive mode for fantasy football is used in many autodrafters for leagues online, but predictive analysis and statistical modeling is used for college players as well, to see how they may or may not translate to the next level. This is important to teams, because they may be able to find undervalued players in the draft that they can get for a "steal" because other teams passed, not knowing their true value, or it can be used to evaluate the "bust" potential of a player who may be overvalued due to a skillset that won't translate well to the professional level.
+### Prerequisites
+- Python 3.8+ 
+- pip package manager
+- Kaggle account with API access
 
+### Dependencies
+Install required packages:
+```bash
+pip install pandas numpy matplotlib seaborn jupyterlab kaggle
+```
 
+### Kaggle API Setup
+1. Create a Kaggle account at [kaggle.com](https://www.kaggle.com)
+2. Go to Account Settings → API → Create New API Token
+3. Download the `kaggle.json` file
+4. Place `kaggle.json` in the appropriate directory:
+   - **Windows**: `%USERPROFILE%\.kaggle\kaggle.json`
+   - **macOS/Linux**: `~/.kaggle/kaggle.json`
+5. Set proper file permissions (read-only for user)
+
+## Getting Started
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/jaw039/CSE151A-Project.git
+cd CSE151A-Project
+```
+
+### 2. Download Dataset
+Run the data download script:
+```bash
+python get_data.py
+```
+
+This will:
+- Download the NFL stats dataset from Kaggle
+- Extract files to the `data/` directory
+- Verify the setup is complete
+
+### 3. Verify Installation
+Check that data files are available:
+```python
+import pandas as pd
+import os
+
+# List available data files
+print("Available data files:")
+for file in os.listdir("data/"):
+    if file.endswith('.csv'):
+        print(f"- {file}")
+
+# Load sample data
+df = pd.read_csv("data/weekly_player_stats_offense.csv")
+print(f"\nSample data shape: {df.shape}")
+print(df.head())
+```
+
+## Project Structure
+```
+CSE151A-Project/
+├── data/                    # Dataset files (created after running get_data.py)
+├── notebooks/              # Jupyter notebooks for analysis
+├── src/                    # Source code and scripts
+├── get_data.py            # Dataset download script
+└── README.md             # This file
+```
+
+## Usage Notes
+- The `data/` folder is created automatically when running `get_data.py`
+- Large data files should be added to `.gitignore` to avoid committing to version control
+- Dataset contains both weekly and yearly statistics for offensive and defensive players
+- All CSV files include headers with detailed column descriptions
+
+## Troubleshooting
+- **Kaggle API errors**: Ensure `kaggle.json` is properly placed and has correct permissions
+- **Permission errors**: Check that your Kaggle account has access to public datasets
+- **Download failures**: Verify internet connection and try running `get_data.py` again
+
+# Data Exploration
 
 # Major Preprocessing
 There are many different positions and they all require a different set of values to calculate their fantasy value/projections, so we decided to just focus on one and try to get our supervised learning model to predict projected values for the next season based on previous season's values. 
@@ -60,3 +139,8 @@ Injury handling can be done through weighting snaps played more. If a player has
 Outliers are slightly more difficult to manage. Chase Brown for example, was an example of an outlier due to his promotion on the team from another player leaving. While Chase Brown isn't a top 5 running back in the league, he saw a great increase in production from having more touches alone. Having some sort of multiplier given to a player if their depth chart position moves upward from one season to the next could be a good way to implement a better prediction algorithm for this kind of outlier. 
 
 In the next milestone, we hope to implement some kind of predictive modeling for all offensive positions in fantasy, and implementing some kind of Gradient Boosting Regressor with an emphasis on game theory to select the best player available in a fantasy draft, and to build the best team possible. We would do this by looking at previous season statistics and calculating who the best N players will be the next season, and how much better each player is than the Value over Replacement Player, which would be the (N+1)th player. Then we would use a Gradient Boosting Regressor to select the best player at each point in the draft, and evaluate how well it did by looking at the total VORP and comparing it to the real statistics of that season.
+
+
+## License
+This project is for educational purposes. Please respect Kaggle's terms of service and the original dataset license.
+
