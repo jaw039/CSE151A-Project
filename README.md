@@ -239,10 +239,6 @@ This new graph was easily able to define the WR/TE position cluster with 100% ac
 <img width="952" height="836" alt="image" src="https://github.com/user-attachments/assets/5fbe69aa-d8b8-47db-a0dc-b6da7a104014" />
 I decided to manually label this graph, to show the various different archetypes of players in the dataset. 
 
-
-
-<img width="952" height="658" alt="image" src="https://github.com/user-attachments/assets/c5d25979-a973-4c7b-922c-97deda9a759e" />
-
 ## License
 This project is for educational purposes. Please respect Kaggle's terms of service and the original dataset license.
 
