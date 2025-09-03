@@ -207,15 +207,26 @@ Looking at the graph, if you know football players, then you will see a clear tr
 Taking a look at the PC1 and PC2 weights, we see that PC1's highest positive weight is indeed Passing Yards, explaining the quarterbacks being far to the right on the X-axis, and it's most negative weight is receptions, followed by receiving yards, explaining receivers being on the low end of the X-axis. Having the highest variance in our data accounted by passing yards makes sense, because of the small number of Quarterbacks, as well as the variety in Quarterback play being from players who play it safe and throw short passes until an opening is found, to improvisers who make their own openings and can extend plays through mobility, and creativity. PC2's highest positive weight is rushing yards, and its most negative weight is passing yards. This explains the high passing yardage but low rushing yardage quarterbacks being towards the bottom of the graph, like "Jared Goff" and "Joe Burrow", while hybrid/dual-threat quarterbacks like Jayden Daniels, Jalen Hurts, and Lamar Jackson can be seen closer to the middle of the graph. 
 
 <img width="757" height="751" alt="image" src="https://github.com/user-attachments/assets/69e7c687-8b72-4f79-899d-85c11eab9c50" />
+
 After adding a 3rd dimension and plotting another Principal Component, our data didn't have much more useful information to tell us, so we decided to stick with using two principal components. An interesting observation we made was that the position of players formed clusters. We conducted K-means clustering to K=3 to see if machine learning could correctly identify the player positions by their position on the graph. 
+
 <img width="952" height="658" alt="image" src="https://github.com/user-attachments/assets/16483bee-119f-4012-8af0-de513de261be" />
-After doing K-means clustering, we evaluated the accuracy of this clustering by comparing each cluster with the actual position. 
+
+After doing K-means clustering, we evaluated the accuracy of this clustering by comparing each cluster with the actual position
+. 
 <img width="1357" height="252" alt="image" src="https://github.com/user-attachments/assets/7e4314e8-702f-4dd7-a770-ad14c98ab196" />
+
 We saw that there was a minor issue in this method, where all players that didn't have significant passing or rushing yards were classified as WRs/ TEs, regardless of position due to the large number of WRs with very small statistics. To remedy this, I decided to add another cluster, and got the following graph:
+
 <img width="950" height="657" alt="image" src="https://github.com/user-attachments/assets/98b2f158-a46d-4f62-9fb6-ab953f96bb91" />
+
 When evaluating this new K-means algorithm, we got the following:
+
 <img width="416" height="292" alt="image" src="https://github.com/user-attachments/assets/50f3459d-5837-4a50-8d31-cf577f8eecda" />
+
 This new graph was easily able to define the WR/TE position cluster with 100% accuracy, Running Backs in Cluster 2 were not misclassified at all, and QBs were also not misclassified. After playing around with the number of clusters, and increasing/decreasing them, I was able to find this graph: 
+
+
 <img width="952" height="836" alt="image" src="https://github.com/user-attachments/assets/5fbe69aa-d8b8-47db-a0dc-b6da7a104014" />
 I decided to manually label this graph, to show the various different archetypes of players in the dataset. 
 
