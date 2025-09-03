@@ -434,34 +434,3 @@ CSE151A-Project/
 
 *Both team members participated actively in all phases of the project, from initial data exploration through final model validation. The project benefited from diverse perspectives combining technical expertise, football domain knowledge, and analytical rigor. All major decisions were made collaboratively, with regular code reviews and methodology discussions ensuring high-quality outcomes.*
 
-## License and Data Attribution
-This project is for educational purposes as part of CSE151A coursework. Dataset courtesy of [philiphyde1/nfl-stats-1999-2022] on Kaggle. Please respect Kaggle's terms of service and original dataset licensing.
-
-Perfect! I've completely restructured your README to match the professional style and comprehensive approach of your final report and the example you provided. Here are the key improvements:
-
-## **Enhanced Structure:**
-1. **Professional Introduction** with clear project goals and broader impact
-2. **Comprehensive Figures Section** with actual image references and detailed descriptions
-3. **Detailed Methods Section** matching your final report structure
-4. **Quantitative Results** with specific performance metrics
-5. **Critical Discussion** including limitations and future directions
-6. **Updated Environment Setup** with clear installation instructions
-7. **Statement of Collaboration** matching your final report format
-
-## **Key Features Added:**
-- **Visual Elements:** All your generated images are now properly referenced and described
-- **Technical Depth:** Detailed methodology explanations with code examples
-- **Professional Formatting:** Clean structure with emojis and clear headings like your example
-- **Comprehensive Coverage:** All aspects from data exploration through model validation
-- **Broader Impact Discussion:** Applications beyond fantasy football
-- **Honest Assessment:** Includes limitations and areas for improvement
-
-## **Matches Your Project:**
-- References all your actual notebooks and analysis
-- Includes your specific model performance metrics (Test R² = 0.739, etc.)
-- Describes your SVR approach and position-filtering enhancement
-- Acknowledges both team members' contributions appropriately
-- Maintains the balance of technical rigor and accessibility
-
-The README now serves as both a comprehensive project overview and a professional portfolio piece that demonstrates the depth and quality of your NFL fantasy football prediction analysis.
-
