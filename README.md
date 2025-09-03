@@ -90,16 +90,23 @@ params = {
 grid = GridSearchCV(SVR(), params, cv=5, scoring='r2')
 grid.fit(X_train_scaled, y_train)
 ```
-### 3.3a Model 2 Development
-**Principal Component Analysis (PCA) + K-means Clustering Implementation:**
-- **Justification:** Chosen for its ability to analyze multiple different statistical categories and plot players against each other in different positions to analyze their value against other positions
-- **Features:** 2024 performance metrics (rushing yards, rushing touchdowns, receiving yards, receiving touchdowns, receptions, passing yards, passing touchdowns, interceptions)
-- **Principal Component Analysis** Found two most variant components tracked passing play and rushing play. When plotted against each other it formed a triangular branchning scatter plot. 
-  
-### 3.4 Model Enhancement
+### 3.4a Model 1 Enhancement
 - **Position-Specific Filtering:** Focus on fantasy-relevant players (RB1/RB2 only)
 - **Feature Scaling:** StandardScaler normalization
 - **Validation Strategy:** 80/20 train-test split with cross-validation
+
+### 3.3b Model 2 Development
+**Principal Component Analysis (PCA) + K-means Clustering Implementation:**
+- **Justification:** Chosen for its ability to analyze multiple different statistical categories and plot players against each other in different positions to analyze their value against other positions
+- **Features:** 2024 performance metrics (rushing yards, rushing touchdowns, receiving yards, receiving touchdowns, receptions, passing yards, passing touchdowns, interceptions)
+- **Principal Component Analysis** Found two most variant components tracked passing play and rushing play. When plotted against each other it formed a triangular branchning scatter plot.
+- **K-means Clustering** Used K-means clustering on Principal Component formed features to find patterns in our data.
+  
+### 3.4b Model 2 Enhancement
+- **Position-Specific Labeling:** Using Different K-values for our K-means Clustering yielded more clusters with different kinds of players in each cluster.
+- **Comparison across Positions** The Principal Component Analysis gave us a representation of our data allowing us to compare players across all positions from RB, QB, TE, WR, despite the vastly different roles each of these play on the field
+- **Evaluation of Z-score to Fantasy Percentile** Taking the Z-score of every player in the PCA graph, and comparing it against their season fantasy scores gives us the following graph:
+
 
 ## 4. Data Exploration and Analysis �
 
@@ -418,10 +425,11 @@ python get_data.py
 ### Project Structure
 ```
 CSE151A-Project/
-├── data_exploration.ipynb      # Initial data analysis and visualization
+├── data_exploration.ipynb     # Initial data analysis and visualization
 ├── firstModel.ipynb           # SVR model development and validation  
 ├── feature_eng.ipynb          # Feature engineering and reliability metrics
 ├── stat_projections.ipynb     # Advanced statistical analysis
+├── PCA.ipynb                  # PCA + K-means clustering
 ├── final_report.ipynb         # Comprehensive project documentation
 ├── images/                    # Generated visualizations and figures
 ├── README.md                  # This documentation
