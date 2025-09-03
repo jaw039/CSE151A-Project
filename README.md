@@ -67,12 +67,13 @@ Our analysis includes several key visualizations that demonstrate our methodolog
 - **Quality Assurance:** Handled missing values, removed duplicates, created depth chart rankings
 - **Feature Engineering:** Developed reliability index combining performance and consistency metrics
 
-### 3.3 Model Development
+### 3.3a Model 1 Development
 **Support Vector Regression (SVR) Implementation:**
 - **Justification:** Chosen for effectiveness with non-linear relationships and robustness to outliers
 - **Features:** 2023 performance metrics (snap count, rushing yards, touchdowns, yards per carry)
 - **Hyperparameter Tuning:** Grid search with 5-fold cross-validation
 - **Enhancement:** Position-filtered analysis for RB1/RB2 players
+
 
 ```python
 # Core model implementation
@@ -89,7 +90,12 @@ params = {
 grid = GridSearchCV(SVR(), params, cv=5, scoring='r2')
 grid.fit(X_train_scaled, y_train)
 ```
-
+### 3.3a Model 2 Development
+**Principal Component Analysis (PCA) + K-means Clustering Implementation:**
+- **Justification:** Chosen for its ability to analyze multiple different statistical categories and plot players against each other in different positions to analyze their value against other positions
+- **Features:** 2024 performance metrics (rushing yards, rushing touchdowns, receiving yards, receiving touchdowns, receptions, passing yards, passing touchdowns, interceptions)
+- **Principal Component Analysis** Found two most variant components tracked passing play and rushing play. When plotted against each other it formed a triangular branchning scatter plot. 
+  
 ### 3.4 Model Enhancement
 - **Position-Specific Filtering:** Focus on fantasy-relevant players (RB1/RB2 only)
 - **Feature Scaling:** StandardScaler normalization
