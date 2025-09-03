@@ -194,14 +194,23 @@ Outliers are slightly more difficult to manage. Chase Brown for example, was an 
 
 # Supervised Learning
 ## Step 1: Principal Component Analysis:
+
 Since all fantasy players are scored on the same scale, regardless of position, we decided to conduct PCA on player's fantasy data to determine the type of player each one is. The first step we took was filtering the offense data from 2024, to find the offensive players that would be able to impact fantasy points. 
+
 <img width="1376" height="308" alt="image" src="https://github.com/user-attachments/assets/64850f43-f118-4b47-a6d7-277b2f808e34" />
+
 Then we scaled the data to make the mean 0, standard deviation 1, and standardize all players.
+
 <img width="1366" height="392" alt="image" src="https://github.com/user-attachments/assets/d6e665ad-436c-4625-831e-8316c7d2078d" />
+
 After that, we aggregated player stats across the season, and applied PCA on them, to find hidden archetypes that each player followed.
+
 <img width="1367" height="416" alt="image" src="https://github.com/user-attachments/assets/15d20262-cd11-4d1b-9f78-357fe40c6c1b" />
+
 The result was the following 2D graph based on the first two principal components.
+
 <img width="945" height="657" alt="image" src="https://github.com/user-attachments/assets/d33ed7f1-d821-4b69-89ff-0d79ae3f4b5e" />
+
 Looking at the graph, if you know football players, then you will see a clear trend in the three "branches" of our data. To the far bottom right is Quarterback data, which is pretty sparse and spread out due to the relatively smaller number of quarterbacks compared to other positions in the NFL. To the far left bottom is receivers who have a much more dense clustering, due to there being more receivers, and tight ends also taking receiver duty a lot of the time. Then, the center to top part of the graph sees mostly running backs, likely characterized by high rushing yardage, and a larger number of rushing touchdowns. 
 
 Taking a look at the PC1 and PC2 weights, we see that PC1's highest positive weight is indeed Passing Yards, explaining the quarterbacks being far to the right on the X-axis, and it's most negative weight is receptions, followed by receiving yards, explaining receivers being on the low end of the X-axis. Having the highest variance in our data accounted by passing yards makes sense, because of the small number of Quarterbacks, as well as the variety in Quarterback play being from players who play it safe and throw short passes until an opening is found, to improvisers who make their own openings and can extend plays through mobility, and creativity. PC2's highest positive weight is rushing yards, and its most negative weight is passing yards. This explains the high passing yardage but low rushing yardage quarterbacks being towards the bottom of the graph, like "Jared Goff" and "Joe Burrow", while hybrid/dual-threat quarterbacks like Jayden Daniels, Jalen Hurts, and Lamar Jackson can be seen closer to the middle of the graph. 
