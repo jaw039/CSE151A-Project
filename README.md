@@ -257,15 +257,15 @@ Since all fantasy players are scored on the same scale regardless of position, w
 
 Through manual labeling of our K-means clustering with 9 clusters, we identified several distinct player archetypes:
 
-1: WR2 and Hybrid Tight-Ends
-2: Masters of None
-3: Starting QBs
-4: Great Backup RBs / Mid Tier Starters
-5: Low Tier Starting QBs
-6: Dual Threat QBs
-7: Elite RBs
-8: WR1s, Receiving Tight Ends
-9: 3rd String / Low Tier Backup RBs
+#### 1: WR2 and Hybrid Tight-Ends
+#### 2: Masters of None
+#### 3: Starting QBs
+#### 4: Great Backup RBs / Mid Tier Starters
+#### 5: Low Tier Starting QBs
+#### 6: Dual Threat QBs
+#### 7: Elite RBs
+#### 8: WR1s, Receiving Tight Ends
+#### 9: 3rd String / Low Tier Backup RBs
 ![K=9 CLustering](images/Kmeans9.png)
 
 **Fantasy Application:** These archetypes inform draft strategy by identifying player types that provide specific value propositions, and their distance from the mean of all data also informs us of who is an outlier among the data and gives us an informed approach to player on player comparisons, especially when it is difficult to tell between two players to draft. 
