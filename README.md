@@ -6,7 +6,7 @@
 
 - [1. Introduction 🏈](#1-introduction)
 - [2. Figures](#2-figures)
-- [9.2 Model Limitations](#92-model-limitations)
+- [3 Methods](#3-methods)
 - [7.1b Data Preprocessing Strategy and Model Development](#71b-data-preprocessing-strategy-and-model-development)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
@@ -63,7 +63,7 @@ Our analysis includes several key visualizations that demonstrate our methodolog
 
 *Note: Additional figures throughout our analysis show training vs. testing errors, evaluation metrics, hyperparameter tuning results, and detailed model interpretations.*
 
-## 3. Methods 🧑‍🔬
+## 3. Methods
 
 ### 3.1 Data Exploration
 - **Dataset:** NFL Player Statistics (1999-2022) from Kaggle - [philiphyde1/nfl-stats-1999-2022]
