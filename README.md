@@ -370,47 +370,29 @@ The K=4 Model saw significant improvements, with a 4th cluster being added that 
 
 Playing around with the K value, and landing on K=9 gave me a good number of clusters classifying different archetypes of players neatly, and allowed me to label them as well. The classification report was insightful, and showed the clustering was about 3 clusters per position. Cluster 1 takes the role of the "Mean" cluster having the most diversity in positions. Since Tight Ends and Receivers both are ball catchers primarily, they are treated the same in the clustering. 
 
-
-
-**Position-Filtered Enhancement (RB1/RB2 only):**
-```
-Train RMSE: 71.89
-Test RMSE: 74.93
-Train R²: 0.457
-Test R²: 0.216
-```
-
-**Final Tuned Model (GridSearchCV):**
-```
-Train RMSE: 28.91
-Test RMSE: 34.67
-Train R²: 0.801
-Test R²: 0.739
-```
-
 **Key Improvements:**
-- **53% reduction** in test RMSE through position filtering
-- **Eliminated negative R²** indicating meaningful predictive power
-- **GridSearchCV optimization** with parameters: `{'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'}`
+- **Higher Classification Accuracy** in classification report through adding K-means 
+- **Archetype and Hidden Player type classification** with PCA 1 and 2 allowing the data to show hidden patterns
 
-### 7.3a Model Insights and Limitations
+### 7.3b Model Insights and Limitations
 
 **What Our Model Successfully Captures:**
-- **Volume-based opportunity metrics** (snap counts, target share)
-- **Touchdown regression patterns** (high scorers typically decline)
-- **Position-specific performance patterns** (elite players more predictable)
-- **Year-over-year consistency factors** for established players
+- **Player Archetypes Beyond Positions:** By combining PCA with K-means clustering, the model identifies groups of players with similar statistical profiles, such as *dual-threat QBs, elite RBs, or high-volume WRs*, rather than limiting classification to listed positions.  
+- **Dimensional Reduction Reveals Patterns:** PCA reduces redundant dimensions while preserving variance, showing which statistical categories (e.g., receptions vs. rushing yards) most influence player separation.  
+- **Improved Differentiation Across Skill Levels:** With higher K values, the model successfully separates *backup-level contributors* from *elite starters* and *hybrid players*, allowing deeper analysis of tiers within positions.  
+- **Insight into Fantasy Value:** Distance from the PCA mean and cluster assignment correlate with fantasy production, giving a way to evaluate not just total points, but *style and archetype of contribution*.  
 
 **Acknowledged Limitations:**
-- **Small sample size** (47 RBs with complete data) limits generalizability
-- **Missing contextual factors:** coaching changes, injury history, offensive line quality
-- **Temporal assumptions:** assumes performance patterns persist across seasons
-- **Position isolation:** doesn't account for cross-positional impacts
+- **Cluster Interpretability:** While clusters can be labeled with football knowledge, the algorithm itself does not inherently “know” positions or player roles. Some clusters may include mixed positions (e.g., WR/TE overlap) that require manual interpretation.  
+- **Static Snapshot:** PCA and clustering were applied to season-long aggregates. This misses *week-to-week variance*, injuries, and mid-season role changes that strongly impact fantasy outcomes.  
+- **Overfitting Cluster Count:** Choosing K=9 worked well heuristically, but it wasn’t optimized using metrics like the **elbow method** or **silhouette score**, which could make clusters more robust.  
+- **No Contextual Features:** The model only considers player statistics, ignoring external factors such as *opponent strength, game scripts, or injuries*, which drive real-world fantasy value.  
 
 **Real-World Challenges:**
-- NFL's inherent unpredictability due to injuries, weather, game script
-- Fantasy football's dynamic environment with weekly adjustments needed
-- Equal treatment of statistics that vary significantly in value (red zone vs. garbage time production)
+- **Data Availability & Quality:** Play-by-play or situational data could enhance clustering but is often harder to acquire and standardize.  
+- **Evolving Player Roles:** Modern NFL offenses increasingly blur positional distinctions (e.g., WRs taking rushing snaps, TEs lining up wide), which makes clean clustering more difficult.  
+- **Fantasy Scoring Variability:** Different leagues (PPR, standard, half-PPR, superflex) weigh contributions differently. A player archetype valuable in one scoring system may not translate equally to another.  
+- **Practical Use in Fantasy Drafting:** While clustering reveals hidden player types, managers must still consider draft position, ADP (average draft position), and roster construction strategy, which aren’t modeled here.  
 
 ## 8. Conclusions and Future Improvements 🎯
 
