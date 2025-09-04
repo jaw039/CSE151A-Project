@@ -215,7 +215,7 @@ Since all fantasy players are scored on the same scale regardless of position, w
         
 **Results and Insights:**
 
-![PCA Visualization](images/player_archetypes_pca.png)
+![PCA Visualization](images/PCA_raw.png)
 
 **Three Distinct "Branches" Identified:**
 - **Far Bottom Right:** Quarterback cluster - sparse and spread out due to smaller QB population
