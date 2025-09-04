@@ -350,7 +350,7 @@ Test R²: 0.739
 4. **K-Means Clustering** Applied K-means clustering to data to get the clusters of players and their archetypes, as well as classification of them by position
 
 
-### 7.2a Model 2 Performance Evolution
+### 7.2b Model 2 Performance Evolution
 
 **Initial K=3 Model:**
 
@@ -369,6 +369,23 @@ The K=4 Model saw significant improvements, with a 4th cluster being added that 
 <img width="491" height="562" alt="image" src="https://github.com/user-attachments/assets/71ba1a7f-7606-4312-86bb-d0c7ac02f2d6" />
 
 Playing around with the K value, and landing on K=9 gave me a good number of clusters classifying different archetypes of players neatly, and allowed me to label them as well. The classification report was insightful, and showed the clustering was about 3 clusters per position. Cluster 1 takes the role of the "Mean" cluster having the most diversity in positions. Since Tight Ends and Receivers both are ball catchers primarily, they are treated the same in the clustering. 
+
+### 7.2.2 Distance from Mean vs Fantasy Performance
+To test the hypothesis that euclidean distance from the mean of the PCA graph and fantasy points were correlated we decided to plot the fantasy points against the distance, and divide by position to see which positions fit the best. We found the following graphs:
+
+![QB PPR correlation](images/distancevsppr_QB.png)
+![QB Standard correlation](images/distancevStandard_QB.png)
+
+![RB PPR correlation](images/distancevsppr_RB.png)
+![RB Standard correlation](images/distancevStandard_RB.png)
+
+![WR PPR correlation](images/distancevsppr_WR.png)
+![WR Standard correlation](images/distancevStandard_WR.png)
+
+![TE PPR correlation](images/distancevsppr_TE.png)
+![TE Standard correlation](images/distancevStandard_TE.png)
+
+As you can see, there is a clear positive correlation with every position and the fantasy production of the player vs the distance from the mean of the PCA components. This means that PCA can be used as a reliable predictor of fantasy production to evaluate who should be selected.
 
 **Key Improvements:**
 - **Higher Classification Accuracy** in classification report through adding K-means 
