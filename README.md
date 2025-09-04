@@ -17,8 +17,11 @@
     - [4.1 Dataset Overview](#41-dataset-overview)
     - [4.2 Target Variable Creation](#42-target-variable-creation)
     - [4.3 Data Quality Assessment](#43-data-quality-assessment)
-- [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
-- [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
+- [5. Data Visualization and Key Insights](#5-data-visualization-and-key-insights)
+    - [5.1 Position Distribution Analysis](#51-position-distribution-analysis)
+    - [5.2 Fantasy Points Consistency Analysis](#52-fantasy-points-consistency-analysis)
+    - [5.3 Running Back Feature Correlation Analysis](#53-running-back-feature-correlation-analysis)
+- [6. Advanced Analytics: Unsupervised Learning](#6-advanced-analytics-unsupervised-learning)
 
 
 ## 1. Introduction
@@ -167,7 +170,7 @@ This engineered column serves as a continuous variable on a ratio scale and repr
 - **Missing values identified** in the "yards per carry" column, which we handled by initializing with 0s (indicating no rushing attempts)
 - **Data integrity maintained** through systematic filtering and validation processes
 
-## 5. Data Visualization and Key Insights 📊
+## 5. Data Visualization and Key Insights
 
 Our comprehensive visualization approach revealed critical patterns that directly informed our modeling strategy:
 
