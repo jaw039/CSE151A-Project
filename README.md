@@ -218,7 +218,7 @@ After focusing on running backs for our initial modeling approach, we analyzed k
 - **Snap count proved crucial** as an opportunity-based predictor
 - **Touchdown production showed regression patterns** year-over-year
 
-## 6. Advanced Analytics: Unsupervised Learning 🤖
+## 6. Advanced Analytics: Unsupervised Learning
 
 ### 6.1 Principal Component Analysis (PCA)
 
