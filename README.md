@@ -4,15 +4,15 @@
 
 # Table of Contents
 
-- [1. Introduction 🏈](#1-introduction-🏈)
-- [9.1 Model Strengths](#91-model-strengths)
+- [1. Introduction 🏈](#1-introduction)
+- [2. Figures](#2-figures)
 - [9.2 Model Limitations](#92-model-limitations)
 - [7.1b Data Preprocessing Strategy and Model Development](#71b-data-preprocessing-strategy-and-model-development)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
 
 
-## 1. Introduction 🏈
+## 1. Introduction
 
 The goal of our project was to develop a machine learning system capable of predicting NFL fantasy football performance based on historical player statistics. This problem was chosen due to its practical applications in fantasy sports, professional team scouting, and the broader challenge of predicting human athletic performance in dynamic environments.
 
@@ -37,7 +37,7 @@ A robust, high-performing predictive model in this domain could revolutionize se
 
 This project was also a natural extension of our shared passion for football and data science, allowing us to combine technical skills with genuine sports knowledge.
 
-## 2. Figures 📊
+## 2. Figures
 
 Our analysis includes several key visualizations that demonstrate our methodology and findings:
 
