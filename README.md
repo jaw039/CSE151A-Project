@@ -589,21 +589,20 @@ Our project tested whether machine learning could systematize intuitive player e
 
 ## 10. Conclusion 🏁
 
-Our NFL fantasy football prediction project represents a successful integration of sports analytics, machine learning, and genuine football passion. While we initially aimed to build a complete "fantasy football autodrafter," we discovered something more valuable: a framework for enhancing rather than replacing football knowledge.
+Our NFL fantasy football prediction project represents a successful integration of sports analytics, machine learning, and genuine football passion. While we initially aimed to build a complete "fantasy football autodrafter," we discovered something more valuable: a framework for enhancing rather than replacing football knowledge. 
 
 ### Key Achievements
-- **Technical Success:** Developed position-specific models with meaningful accuracy (Test R² = 0.739 for filtered data)
-- **Methodological Innovation:** Created reliability indices balancing performance and consistency
-- **Sports Analytics Validation:** Successfully identified and quantified known football phenomena
+- **Player Archetype Analysis** We were able to successfully classify players and the archetype they fit in by position, all in one graph using PCA and K-means clustering. This was one of the most interesting and fun parts of the project in our opinion. Sports Data is usually very difficult to quantify statistically, and it isn't always a game of numbers, as coaching and schemes can often outplay superior talent if done right, but seeing numbers validated in our data and form distinct clusters that could be analyzed by the machine and code was very satisfying. It also showed the application of machine learning processes in a way that was interesting to us and could show us meaningful results and data
+- **Correlation Between PCA and fantasy performance** We found that using PCA, our model was extremely improved in predicting fantasy statistics. The Euclidean PCA Distance was able to determine the Fantasy player statistics much better than our other statistics were in our first model. The relationship was much more tightly fit and made much more sense for all positions. It was very interesting to see the correlation between those two statistics.
 
 ### Future Improvements
-- **Enhanced Features:** Incorporate advanced metrics like target share, red zone opportunities, and strength of schedule
-- **Dynamic Models:** Develop weekly prediction capabilities for in-season adjustments
-- **Multi-Position Analysis:** Extend methodology to quarterbacks, wide receivers, and tight ends
-- **Ensemble Methods:** Combine multiple model types for improved accuracy
+- **Different Objective** Choosing a different objective for these models would have been good. Sports Prediction is difficult to do, due to certain characteristics, so using Machine Learning for player classification like for College Players to see where their best fit in the NFL would be, would be one that we want to do.
+- **Dynamic Models:** Develop weekly prediction capabilities for in-season adjustments based on a player's experience, injuries, play of other factors like Offensive Linemen, Quarterback, Defensive Schemes, and more.
+- **Multi-Position Analysis:** Extend methodology to defensive players, and offensive linemen to analyze deeper statistics like coverage grade, blocking grade, efficiency, and more.
+- **Ensemble Methods:** Combine multiple model types for improved accuracy, such as PCA and Logistic Regression, SVM Boundary Classification, or using a different feature transformation for the data.
 
 ### Broader Impact
-Our methodologies extend beyond fantasy football into professional team management, player development, and contract negotiations. The challenges we encountered - handling seasonal variance, balancing evaluation criteria, and predicting human performance - have applications in financial forecasting, employee evaluation, and healthcare outcomes.
+Our methodologies extend beyond fantasy football into professional team management, player development, and contract negotiations. The challenges we encountered - handling seasonal variance, balancing evaluation criteria, and predicting human performance, as well as analysis of play style and statistics for combining players that will scheme together well - have applications in financial forecasting, team success, coaching schemes, player evaluation, and healthcare outcomes.
 
 ## 11. Environment Setup and Usage
 
