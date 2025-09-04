@@ -472,14 +472,44 @@ Our analysis revealed that **statistical modeling for individual positions in is
 
 ## 9. Discussion 🗣️
 
-### 9.1 Model Strengths
+### 9.1a Model 1 Strengths
 Our SVR approach successfully captured several key football analytics concepts:
 - **Opportunity Metrics:** Snap count proved crucial for predicting future success
 - **Touchdown Regression:** Model identified the well-known phenomenon where high touchdown scorers typically decline
 - **Position-Specific Patterns:** Elite players (RB1/RB2) showed more predictable patterns than fringe roster players
 
+### 9.1b Model 2 Strengths
+**1. Effective Dimensionality Reduction**  
+- PCA successfully distilled multiple offensive statistics into **two main components (PC1 & PC2)**, simplifying the analysis without losing key information.  
+- Allowed clear visualization of player archetypes and statistical patterns across positions.
+- 
+**2. Archetype Identification**  
+- K-means clustering on PCA components effectively grouped players into **distinct archetypes**, such as:
+  - Starting QBs  
+  - Dual-threat QBs  
+  - WR1s / receiving tight ends  
+  - High-output RBs  
+  - Backup or low-tier players  
+- These clusters align well with **real-world fantasy football roles**.
+
+**3. Position-Aware Insights**  
+- Clustering reveals **hidden patterns within positions**, e.g., separating elite RBs from mid-tier starters, or WR2/TE hybrids from WR1s.  
+- Provides **position-specific intelligence** useful for draft or waiver decisions.
+
+**4. Quantitative Player Comparison**  
+- Euclidean distance from the PCA mean provides a **single metric capturing overall fantasy-relevant impact**, making it easy to compare players across positions.  
+
+**5. Flexibility Across Scoring Formats**  
+- Model allows comparison of distance metrics against **PPR and standard scoring**, showing robustness and adaptability to different fantasy leagues.
+
+**6. Data-Driven Insights Without Prior Bias**  
+- Unsupervised approach **discovers archetypes naturally** from player statistics, reducing reliance on subjective labels or analyst assumptions.
+
+**7. Visualization-Friendly**  
+- PCA + clustering allows **intuitive plotting and interactive exploration**, making insights accessible to both analysts and fantasy managers.
+
 ### 9.2 Critical Analysis and Limitations
-**Sample Size Constraints:** Only 47 running backs had complete 2023-2024 data, limiting generalizability
+**Sample Size Constraints:** Only 47 running backs had complete 2023-2024 data, limiting generalizability. For our unsupervised data, we only have data to extrapolate from that year, and can't analyze trends across multiyear spans to analyze regression of player performance due to age, injury, weight gain, height, and other factors. 
 
 **Missing Contextual Factors:**
 - Coaching changes and scheme alterations
@@ -488,6 +518,8 @@ Our SVR approach successfully captured several key football analytics concepts:
 - Game script and situational factors
 
 **Temporal Assumptions:** The model assumes 2023 performance patterns persist into 2024, potentially missing regime changes or player development arcs
+
+
 
 ### 9.3 Real-World Application Challenges
 Fantasy football operates in a dynamic environment where player values fluctuate based on weekly performance, injuries, and matchups. Our annual prediction model doesn't capture in-season adjustments that fantasy managers must make throughout the season.
