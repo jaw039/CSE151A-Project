@@ -7,7 +7,7 @@
 - [1. Introduction 🏈](#1-introduction)
 - [2. Figures](#2-figures)
 - [3. Methods](#3-methods)
-    - [3.1 Data Exploration](31-data-exploration)
+    - [3.1 Data Exploration](##31-data-exploration)
     - [3.2]
     - [3.3]
     - [3.4]   
