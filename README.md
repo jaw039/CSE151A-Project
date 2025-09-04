@@ -4,7 +4,7 @@
 
 # Table of Contents
 
-- [1. Introduction 🏈](#1-introduction)
+- [1. Introduction](#1-introduction)
 - [2. Figures](#2-figures)
 - [3. Methods](#3-methods)
     - [3.1 Data Exploration](#31-data-exploration)
