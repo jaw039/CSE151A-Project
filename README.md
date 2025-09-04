@@ -7,10 +7,10 @@
 - [1. Introduction 🏈](#1-introduction)
 - [2. Figures](#2-figures)
 - [3. Methods](#3-methods)
-    - [3.1 Data Exploration](##31-data-exploration)
-    - [3.2]
-    - [3.3]
-    - [3.4]   
+    - [3.1 Data Exploration](#31-data-exploration)
+    - [3.2 Data Preprocessing](#32-data-preprocessing)
+    - [3.3a Model 1 Development](#33a-model-1-development)
+    - [3.4a Model 1 Enhancement](#34a-model-1-enhancement)   
 - [7.1b Data Preprocessing Strategy and Model Development](#71b-data-preprocessing-strategy-and-model-development)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
