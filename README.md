@@ -12,7 +12,7 @@
     - [3.3a Model 1 Development](#33a-model-1-development)
     - [3.4a Model 1 Enhancement](#34a-model-1-enhancement)
     - [3.3b Model 2 Development](#33a-model-2-development)
-    - [3.4b Model 1 Enhancement](#34a-model-2-enhancement)
+    - [3.4b Model 2 Enhancement](#34a-model-2-enhancement)
 - [7.1b Data Preprocessing Strategy and Model Development](#71b-data-preprocessing-strategy-and-model-development)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
