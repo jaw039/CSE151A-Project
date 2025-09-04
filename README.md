@@ -390,6 +390,7 @@ As you can see, there is a clear positive correlation with every position and th
 **Key Improvements:**
 - **Higher Classification Accuracy** in classification report through adding K-means 
 - **Archetype and Hidden Player type classification** with PCA 1 and 2 allowing the data to show hidden patterns
+- **Outlier Discovery and Fantasy Performance Prediction** Being able to predict the Fantasy Points with the performance factor of PCAs
 
 ### 7.3b Model Insights and Limitations
 
