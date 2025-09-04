@@ -22,6 +22,12 @@
     - [5.2 Fantasy Points Consistency Analysis](#52-fantasy-points-consistency-analysis)
     - [5.3 Running Back Feature Correlation Analysis](#53-running-back-feature-correlation-analysis)
 - [6. Advanced Analytics: Unsupervised Learning](#6-advanced-analytics-unsupervised-learning)
+  - [6.1 Principal Component Analysis (PCA)](#61-principal-component-analysis-pca)
+  - [6.2 K-Means Clustering Validation](#62-k-means-clustering-validation)
+  - [6.3 Player Archetype Identification](#63-player-archetype-identification)
+- [7a. Model 1 Development and Enhancement 🔧](#7a-model-1-development-and-enhancement)
+  - [7.1a Data Preprocessing Strategy](#71a-data-preprocessing-strategy)
+  - [7.2a Model 1 Performance Evolution](#72a-model-1-performance-evolution)
 
 
 ## 1. Introduction
@@ -292,9 +298,11 @@ Through manual labeling of our K-means clustering with 9 clusters, we identified
 
 **Fantasy Application:** These archetypes inform draft strategy by identifying player types that provide specific value propositions, and their distance from the mean of all data also informs us of who is an outlier among the data and gives us an informed approach to player on player comparisons, especially when it is difficult to tell between two players to draft. 
 
-## 7a. Model 1 Development and Enhancement 🔧
+## 7. Development and Enhancement
 
-### 7.1a Data Preprocessing Strategy
+### 7a. Model 1 Development and Enhancement
+
+#### 7.1a Data Preprocessing Strategy
 
 **Temporal Filtering:**
 - Focused on **2023-2024 seasons** for most recent and relevant data
@@ -306,7 +314,7 @@ Through manual labeling of our K-means clustering with 9 clusters, we identified
 - Developed **opportunity-based metrics** emphasizing volume indicators
 - Implemented **position-specific normalization** for cross-positional comparisons
 
-### 7.2a Model 1 Performance Evolution
+#### 7.2a Model 1 Performance Evolution
 
 **Initial SVR Model:**
 ```
@@ -337,7 +345,7 @@ Test R²: 0.739
 - **Eliminated negative R²** indicating meaningful predictive power
 - **GridSearchCV optimization** with parameters: `{'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'}`
 
-### 7.3a Model Insights and Limitations
+#### 7.3a Model Insights and Limitations
 
 **What Our Model Successfully Captures:**
 - **Volume-based opportunity metrics** (snap counts, target share)
@@ -357,9 +365,9 @@ Test R²: 0.739
 - Equal treatment of statistics that vary significantly in value (red zone vs. garbage time production)
 
 
-## 7b. Model 2 Development and Enhancement 🔧
+### 7b. Model 2 Development and Enhancement
 
-### 7.1a Data Preprocessing Strategy and Model Development
+#### 7.1b Data Preprocessing Strategy and Model Development
 
 1. **Data Filtering:** Focused on 2024 offensive players capable of generating fantasy points
 -**Aggregation** Aggregated player statistics week by week for the season, and included fantasy points in our aggregation but not in our PCA.
@@ -372,7 +380,7 @@ Test R²: 0.739
 4. **K-Means Clustering** Applied K-means clustering to data to get the clusters of players and their archetypes, as well as classification of them by position
 
 
-### 7.2b Model 2 Performance Evolution
+#### 7.2b Model 2 Performance Evolution
 
 **Initial K=3 Model:**
 
@@ -392,7 +400,7 @@ The K=4 Model saw significant improvements, with a 4th cluster being added that 
 
 Playing around with the K value, and landing on K=9 gave me a good number of clusters classifying different archetypes of players neatly, and allowed me to label them as well. The classification report was insightful, and showed the clustering was about 3 clusters per position. Cluster 1 takes the role of the "Mean" cluster having the most diversity in positions. Since Tight Ends and Receivers both are ball catchers primarily, they are treated the same in the clustering. 
 
-### 7.2.2 Distance from Mean vs Fantasy Performance
+#### 7.2.2 Distance from Mean vs Fantasy Performance
 To test the hypothesis that euclidean distance from the mean of the PCA graph and fantasy points were correlated we decided to plot the fantasy points against the distance, and divide by position to see which positions fit the best. We found the following graphs:
 
 ![QB PPR correlation](images/distancevsppr_QB.png)
@@ -414,7 +422,7 @@ As you can see, there is a clear positive correlation with every position and th
 - **Archetype and Hidden Player type classification** with PCA 1 and 2 allowing the data to show hidden patterns
 - **Outlier Discovery and Fantasy Performance Prediction** Being able to predict the Fantasy Points with the performance factor of PCAs
 
-### 7.3b Model Insights and Limitations
+#### 7.3b Model Insights and Limitations
 
 **What Our Model Successfully Captures:**
 - **Player Archetypes Beyond Positions:** By combining PCA with K-means clustering, the model identifies groups of players with similar statistical profiles, such as *dual-threat QBs, elite RBs, or high-volume WRs*, rather than limiting classification to listed positions.  
