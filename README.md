@@ -422,7 +422,7 @@ Our analysis revealed that **statistical modeling for individual positions in is
 - **External dependencies** like offensive line blocking and defensive efficiency
 - **Small sample sizes** inherent in 17-game NFL seasons
 
-### 8.2 Proposed Model Enhancements
+### 8.2a Proposed Model Enhancements
 
 **Injury and Context Handling:**
 - **Weight snap counts more heavily** as indicator of health and role security
@@ -440,15 +440,45 @@ Our analysis revealed that **statistical modeling for individual positions in is
 - **Team-based modeling** incorporating offensive system effects
 - **Weekly prediction capabilities** for in-season adjustments
 
-## 5. Discussion 🗣️
+### 8.2b Proposed Model Enhancements
+**1. Enhanced Clustering Approaches**  
+- Experiment with **different clustering algorithms** (e.g., DBSCAN, Gaussian Mixture Models) to capture non-linear groupings and overlapping archetypes.  
+- Use **cluster validation metrics** such as silhouette score, Davies–Bouldin index, or Calinski–Harabasz to more systematically choose the optimal K.  
 
-### 5.1 Model Strengths
+**2. Incorporation of Contextual Features**  
+- Add situational features such as **opponent defensive rankings, offensive line performance, and team pace of play** to better explain player outputs.  
+- Include **game script indicators** (e.g., average score differential when a player receives touches) to capture how usage depends on context.  
+
+**3. Time-Series Modeling**  
+- Shift from season-level aggregates to **week-by-week PCA and clustering**, which would better capture streaks, injuries, and player development.  
+- Apply **Hidden Markov Models (HMMs) or RNNs** to model transitions between player roles across a season.  
+
+**4. Fantasy-Scoring Sensitivity Analysis**  
+- Re-run clustering under different **scoring formats** (standard, half-PPR, superflex) to see how player archetypes shift.  
+- Compare **distance-to-mean metrics** against fantasy points across these formats to evaluate stability of archetypes.  
+
+**5. Integration with Draft/ADP Data**  
+- Merge with **Average Draft Position (ADP)** datasets to assess whether identified archetypes are **overvalued or undervalued** relative to their fantasy output.  
+- Could guide **draft strategy** by highlighting hidden tiers or overlooked player types.  
+
+**6. Advanced Visualization**  
+- Deploy **interactive dashboards** (e.g., Plotly, Streamlit) where users can filter by position, team, or cluster and explore PCA/clustering results dynamically.  
+- Highlight **“nearest neighbors”** in PCA space to suggest comparable players for trades or waiver pickups.  
+
+**7. Hybrid Modeling Approaches**  
+- Combine **unsupervised learning (clustering)** with **supervised prediction (regression, gradient boosting, neural nets)** to directly forecast fantasy output while retaining interpretability.  
+- Use cluster assignments as **features in downstream predictive models**.  
+
+
+## 9. Discussion 🗣️
+
+### 9.1 Model Strengths
 Our SVR approach successfully captured several key football analytics concepts:
 - **Opportunity Metrics:** Snap count proved crucial for predicting future success
 - **Touchdown Regression:** Model identified the well-known phenomenon where high touchdown scorers typically decline
 - **Position-Specific Patterns:** Elite players (RB1/RB2) showed more predictable patterns than fringe roster players
 
-### 5.2 Critical Analysis and Limitations
+### 9.2 Critical Analysis and Limitations
 **Sample Size Constraints:** Only 47 running backs had complete 2023-2024 data, limiting generalizability
 
 **Missing Contextual Factors:**
@@ -459,10 +489,10 @@ Our SVR approach successfully captured several key football analytics concepts:
 
 **Temporal Assumptions:** The model assumes 2023 performance patterns persist into 2024, potentially missing regime changes or player development arcs
 
-### 5.3 Real-World Application Challenges
+### 9.3 Real-World Application Challenges
 Fantasy football operates in a dynamic environment where player values fluctuate based on weekly performance, injuries, and matchups. Our annual prediction model doesn't capture in-season adjustments that fantasy managers must make throughout the season.
 
-### 5.4 Football Knowledge vs. Data Science
+### 9.4 Football Knowledge vs. Data Science
 Our project tested whether machine learning could systematize intuitive player evaluation. Results suggest partial success - the model captures broad patterns while missing nuanced factors that experienced fantasy players consider.
 
 **Where Models Excel:**
@@ -475,7 +505,7 @@ Our project tested whether machine learning could systematize intuitive player e
 - Evaluating injury impact and recovery timelines
 - Understanding team dynamics and locker room situations
 
-## 6. Conclusion 🏁
+## 10. Conclusion 🏁
 
 Our NFL fantasy football prediction project represents a successful integration of sports analytics, machine learning, and genuine football passion. While we initially aimed to build a complete "fantasy football autodrafter," we discovered something more valuable: a framework for enhancing rather than replacing football knowledge.
 
@@ -493,7 +523,7 @@ Our NFL fantasy football prediction project represents a successful integration 
 ### Broader Impact
 Our methodologies extend beyond fantasy football into professional team management, player development, and contract negotiations. The challenges we encountered - handling seasonal variance, balancing evaluation criteria, and predicting human performance - have applications in financial forecasting, employee evaluation, and healthcare outcomes.
 
-## 7. Environment Setup and Usage 🛠️
+## 11. Environment Setup and Usage 🛠️
 
 ### Prerequisites
 - Python 3.8+ with pip package manager
@@ -528,15 +558,15 @@ CSE151A-Project/
 └── data/                      # NFL statistics dataset (auto-generated)
 ```
 
-## 8. Statement of Collaboration 👥
+## 12. Statement of Collaboration 👥
 
 **Jackie Wang**
-- **Title:** Lead Data Scientist and Developer
+- **Title:** Lead Data Scientist and Supervised Learning Specialist
 - **Contribution:** Primary contributor to data exploration, SVR model implementation, and feature engineering. Led preprocessing pipeline development and reliability index creation. Major contributor to technical documentation and figure generation. Responsible for model validation and hyperparameter tuning processes.
 
 **Akul Kudari**  
-- **Title:** Project Lead and Analyst
-- **Contribution:** Project management and methodology oversight. Key contributor to position-specific filtering approaches and model enhancement strategies. Significant contributions to data visualization frameworks and results interpretation. Led collaborative discussions and ensured project timeline adherence.
+- **Title:** Project Lead and Unsupervised Learning Specialist
+- **Contribution:** Project management and methodology oversight. Key contributor to position-specific filtering approaches and model enhancement strategies. Significant contributions to data visualization frameworks and results interpretation. Led collaborative discussions and ensured project timeline adherence. Contributed to Unsupervised Learning Approach and Clustering Approach
 
 *Both team members participated actively in all phases of the project, from initial data exploration through final model validation. The project benefited from diverse perspectives combining technical expertise, football domain knowledge, and analytical rigor. All major decisions were made collaboratively, with regular code reviews and methodology discussions ensuring high-quality outcomes.*
 
