@@ -33,6 +33,22 @@
   - [7.1b Data Preprocessing Strategy](#71b-data-preprocessing-strategy-and-model-development)
   - [7.2b Model 2 Performance Evolution](#72b-model-2-performance-evolution)
   - [7.3b Model 2 Insights and Limitations](#73b-Model-Insights-and-Limitations)
+  - [7.4b Distance from Mean vs Fantasy Performance](#722-Distance-from-Mean-vs-Fantasy-Performance)
+-[8. Conclusions and Future Improvements](#8-Conclusions-and-Future-Improvements)
+  -[8.1 Key Learnings](#81-Key-Learnings)
+  -[8.2a Proposed Model Enhancements](#82a-Proposed-Model-Enhancements)
+  -[8.2b Proposed Model Enhancements](#82b-Proposed-Model-Enhancements)
+-[9. Discussion](#9-Discussion)
+  -[9.1a Model 1 Strengths](#91a-Model-1-Strengths)
+  -[9.1b Model 2 Strengths](#91b-Model-2-Strengths)
+  -[9.2 Critical Analysis and Limitations](#92-Critical-Analysis-and-Limitations)
+  -[9.3 Real-World Application Challenges](#93-Real-World-Application-Challenges)
+  -[9.4 Football Knowledge vs. Data Science](#94-Football-Knowledge-vs-Data-Science)
+-[10. Conclusion](#10-conclusion)
+-[11. Environment Setup and Usage](#11-Environment-Setup-and-Usage)
+-[12. Statement of Collaboration](#12-Statement-of-Collaboration)
+
+
 
 ## 1. Introduction
 
@@ -446,7 +462,7 @@ As you can see, there is a clear positive correlation with every position and th
 - **Fantasy Scoring Variability:** Different leagues (PPR, standard, half-PPR, superflex) weigh contributions differently. A player archetype valuable in one scoring system may not translate equally to another.  
 - **Practical Use in Fantasy Drafting:** While clustering reveals hidden player types, managers must still consider draft position, ADP (average draft position), and roster construction strategy, which aren’t modeled here.  
 
-## 8. Conclusions and Future Improvements 🎯
+## 8. Conclusions and Future Improvements
 
 ### 8.1 Key Learnings
 
@@ -504,7 +520,7 @@ Our analysis revealed that **statistical modeling for individual positions in is
 - Use cluster assignments as **features in downstream predictive models**.  
 
 
-## 9. Discussion 🗣️
+## 9. Discussion
 
 ### 9.1a Model 1 Strengths
 Our SVR approach successfully captured several key football analytics concepts:
@@ -589,7 +605,7 @@ Our NFL fantasy football prediction project represents a successful integration 
 ### Broader Impact
 Our methodologies extend beyond fantasy football into professional team management, player development, and contract negotiations. The challenges we encountered - handling seasonal variance, balancing evaluation criteria, and predicting human performance - have applications in financial forecasting, employee evaluation, and healthcare outcomes.
 
-## 11. Environment Setup and Usage 🛠️
+## 11. Environment Setup and Usage
 
 ### Prerequisites
 - Python 3.8+ with pip package manager
@@ -624,7 +640,7 @@ CSE151A-Project/
 └── data/                      # NFL statistics dataset (auto-generated)
 ```
 
-## 12. Statement of Collaboration 👥
+## 12. Statement of Collaboration
 
 **Jackie Wang**
 - **Title:** Lead Data Scientist and Supervised Learning Specialist
