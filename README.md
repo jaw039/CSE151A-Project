@@ -28,7 +28,7 @@
 - [7a. Model 1 Development and Enhancement 🔧](#7a-model-1-development-and-enhancement)
   - [7.1a Data Preprocessing Strategy](#71a-data-preprocessing-strategy)
   - [7.2a Model 1 Performance Evolution](#72a-model-1-performance-evolution)
-
+  - [7.3a Model 1 Insights and Limitations](#73a-Model-Insights-and-Limitations)
 
 ## 1. Introduction
 
