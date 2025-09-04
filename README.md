@@ -196,7 +196,7 @@ After focusing on running backs for our initial modeling approach, we analyzed k
 - **Snap count proved crucial** as an opportunity-based predictor
 - **Touchdown production showed regression patterns** year-over-year
 
-## 6. Advanced Analytics: Supervised Learning 🤖
+## 6. Advanced Analytics: Unsupervised Learning 🤖
 
 ### 6.1 Principal Component Analysis (PCA)
 
@@ -204,10 +204,15 @@ Since all fantasy players are scored on the same scale regardless of position, w
 
 **Methodology:**
 1. **Data Filtering:** Focused on 2024 offensive players capable of generating fantasy points
+-**Aggregation** Aggregated player statistics week by week for the season, and included fantasy points in our aggregation but not in our PCA.
+   <img width="1572" height="401" alt="image" src="https://github.com/user-attachments/assets/91758b13-ccbd-41d9-a68f-0ec2e9ef194e" />
 2. **Data Standardization:** Scaled data to mean 0, standard deviation 1 across all players
-3. **Aggregation:** Combined player stats across the season for comprehensive analysis
-4. **PCA Application:** Applied dimensionality reduction to discover underlying patterns
-
+-**Done using StandardScaler from scikitLearn**
+   <img width="1575" height="475" alt="image" src="https://github.com/user-attachments/assets/64c001c6-952d-4c00-92de-badd7f321776" />
+3. **PCA Application:** Applied dimensional reduction to discover underlying patterns
+    <img width="1567" height="662" alt="image" src="https://github.com/user-attachments/assets/8822a4c1-6d0b-42f4-acf2-311b45dd3ba7" />
+  
+        
 **Results and Insights:**
 
 ![PCA Visualization](images/player_archetypes_pca.png)
