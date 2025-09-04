@@ -359,11 +359,13 @@ Test R²: 0.739
 The K=3 model had classified the QBs and RBs well, but classified all other players that didn't have significant enough statistics into the 3rd cluster, so we decided to add another cluster to try and reduce this error.
 
 **K=4 Model:**
+
 <img width="502" height="336" alt="image" src="https://github.com/user-attachments/assets/22941ada-1ae6-470f-ae7b-a68c63e928be" />
 
 The K=4 Model saw significant improvements, with a 4th cluster being added that split the third cluster into pure receivers and other players with stats that weren't significant enough to be classified into a different category.
 
 **K=9 Model:**
+
 <img width="491" height="562" alt="image" src="https://github.com/user-attachments/assets/71ba1a7f-7606-4312-86bb-d0c7ac02f2d6" />
 
 Playing around with the K value, and landing on K=9 gave me a good number of clusters classifying different archetypes of players neatly, and allowed me to label them as well. The classification report was insightful, and showed the clustering was about 3 clusters per position. Cluster 1 takes the role of the "Mean" cluster having the most diversity in positions. Since Tight Ends and Receivers both are ball catchers primarily, they are treated the same in the clustering. 
