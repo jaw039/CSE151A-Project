@@ -238,10 +238,15 @@ Since all fantasy players are scored on the same scale regardless of position, w
 - Successfully separated QBs, RBs, and WR/TE groups
 - Minor classification issues with low-volume players being grouped as WRs
 
+![K=3 CLustering](images/Kmeans3.png)
+
+
 **Enhanced Clustering (K=4):**
 - **100% accuracy** for WR/TE position identification
 - **No misclassification** of Running Backs or Quarterbacks
 - Successfully isolated backup/low-volume players into distinct cluster
+![K=4 CLustering](images/Kmeans4.png)
+
 
 **Validation Results:**
 - Machine learning clustering **perfectly aligned** with actual position assignments
@@ -250,20 +255,24 @@ Since all fantasy players are scored on the same scale regardless of position, w
 
 ### 6.3 Player Archetype Identification
 
-Through manual analysis of our PCA results, we identified several distinct player archetypes:
+Through manual labeling of our K-means clustering with 9 clusters, we identified several distinct player archetypes:
 
-1. **Traditional Pocket Passers:** High passing volume, minimal rushing (Goff, Burrow)
-2. **Dual-Threat Quarterbacks:** Balanced passing/rushing production (Jackson, Hurts)
-3. **Volume Receivers:** High reception totals, consistent targets
-4. **Big-Play Receivers:** Lower volume, higher yards per reception
-5. **Workhorse Running Backs:** High carry volume, goal-line opportunities
-6. **Pass-Catching Backs:** Significant receiving production alongside rushing
+1: WR2 and Hybrid Tight-Ends
+2: Masters of None
+3: Starting QBs
+4: Great Backup RBs / Mid Tier Starters
+5: Low Tier Starting QBs
+6: Dual Threat QBs
+7: Elite RBs
+8: WR1s, Receiving Tight Ends
+9: 3rd String / Low Tier Backup RBs
+![K=9 CLustering](images/Kmeans9.png)
 
-**Fantasy Application:** These archetypes inform draft strategy by identifying player types that provide specific value propositions (floor vs. ceiling, consistency vs. upside potential).
+**Fantasy Application:** These archetypes inform draft strategy by identifying player types that provide specific value propositions, and their distance from the mean of all data also informs us of who is an outlier among the data and gives us an informed approach to player on player comparisons, especially when it is difficult to tell between two players to draft. 
 
-## 7. Model Development and Enhancement 🔧
+## 7a. Model 1 Development and Enhancement 🔧
 
-### 7.1 Data Preprocessing Strategy
+### 7.1a Data Preprocessing Strategy
 
 **Temporal Filtering:**
 - Focused on **2023-2024 seasons** for most recent and relevant data
@@ -275,7 +284,7 @@ Through manual analysis of our PCA results, we identified several distinct playe
 - Developed **opportunity-based metrics** emphasizing volume indicators
 - Implemented **position-specific normalization** for cross-positional comparisons
 
-### 7.2 Model Performance Evolution
+### 7.2a Model 1 Performance Evolution
 
 **Initial SVR Model:**
 ```
@@ -306,7 +315,83 @@ Test R²: 0.739
 - **Eliminated negative R²** indicating meaningful predictive power
 - **GridSearchCV optimization** with parameters: `{'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'}`
 
-### 7.3 Model Insights and Limitations
+### 7.3a Model Insights and Limitations
+
+**What Our Model Successfully Captures:**
+- **Volume-based opportunity metrics** (snap counts, target share)
+- **Touchdown regression patterns** (high scorers typically decline)
+- **Position-specific performance patterns** (elite players more predictable)
+- **Year-over-year consistency factors** for established players
+
+**Acknowledged Limitations:**
+- **Small sample size** (47 RBs with complete data) limits generalizability
+- **Missing contextual factors:** coaching changes, injury history, offensive line quality
+- **Temporal assumptions:** assumes performance patterns persist across seasons
+- **Position isolation:** doesn't account for cross-positional impacts
+
+**Real-World Challenges:**
+- NFL's inherent unpredictability due to injuries, weather, game script
+- Fantasy football's dynamic environment with weekly adjustments needed
+- Equal treatment of statistics that vary significantly in value (red zone vs. garbage time production)
+
+
+## 7b. Model 2 Development and Enhancement 🔧
+
+### 7.1a Data Preprocessing Strategy and Model Development
+
+1. **Data Filtering:** Focused on 2024 offensive players capable of generating fantasy points
+-**Aggregation** Aggregated player statistics week by week for the season, and included fantasy points in our aggregation but not in our PCA.
+   <img width="1572" height="401" alt="image" src="https://github.com/user-attachments/assets/91758b13-ccbd-41d9-a68f-0ec2e9ef194e" />
+2. **Data Standardization:** Scaled data to mean 0, standard deviation 1 across all players
+-**Done using StandardScaler from scikitLearn**
+   <img width="1575" height="475" alt="image" src="https://github.com/user-attachments/assets/64c001c6-952d-4c00-92de-badd7f321776" />
+3. **PCA Application:** Applied dimensional reduction to discover underlying patterns
+    <img width="1567" height="662" alt="image" src="https://github.com/user-attachments/assets/8822a4c1-6d0b-42f4-acf2-311b45dd3ba7" />
+4. **K-Means Clustering** Applied K-means clustering to data to get the clusters of players and their archetypes, as well as classification of them by position
+
+
+### 7.2a Model 2 Performance Evolution
+
+**Initial K=3 Model:**
+
+<img width="491" height="282" alt="image" src="https://github.com/user-attachments/assets/1a0c1489-07e4-4f83-827a-8f715f74940d" />
+
+The K=3 model had classified the QBs and RBs well, but classified all other players that didn't have significant enough statistics into the 3rd cluster, so we decided to add another cluster to try and reduce this error.
+
+**K=4 Model:**
+<img width="502" height="336" alt="image" src="https://github.com/user-attachments/assets/22941ada-1ae6-470f-ae7b-a68c63e928be" />
+
+The K=4 Model saw significant improvements, with a 4th cluster being added that split the third cluster into pure receivers and other players with stats that weren't significant enough to be classified into a different category.
+
+**K=9 Model:**
+<img width="491" height="562" alt="image" src="https://github.com/user-attachments/assets/71ba1a7f-7606-4312-86bb-d0c7ac02f2d6" />
+
+Playing around with the K value, and landing on K=9 gave me a good number of clusters classifying different archetypes of players neatly, and allowed me to label them as well. The classification report was insightful, and showed the clustering was about 3 clusters per position. Cluster 1 takes the role of the "Mean" cluster having the most diversity in positions. Since Tight Ends and Receivers both are ball catchers primarily, they are treated the same in the clustering. 
+
+
+
+**Position-Filtered Enhancement (RB1/RB2 only):**
+```
+Train RMSE: 71.89
+Test RMSE: 74.93
+Train R²: 0.457
+Test R²: 0.216
+```
+
+**Final Tuned Model (GridSearchCV):**
+```
+Train RMSE: 28.91
+Test RMSE: 34.67
+Train R²: 0.801
+Test R²: 0.739
+```
+
+**Key Improvements:**
+- **53% reduction** in test RMSE through position filtering
+- **Eliminated negative R²** indicating meaningful predictive power
+- **GridSearchCV optimization** with parameters: `{'C': 10, 'epsilon': 1.0, 'gamma': 'scale', 'kernel': 'rbf'}`
+
+### 7.3a Model Insights and Limitations
 
 **What Our Model Successfully Captures:**
 - **Volume-based opportunity metrics** (snap counts, target share)
