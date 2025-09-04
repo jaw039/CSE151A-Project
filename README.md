@@ -14,6 +14,9 @@
     - [3.3b Model 2 Development](#33b-model-2-development)
     - [3.4b Model 2 Enhancement](#34b-model-2-enhancement)
 - [4. Data Exploration and Analysis](#4-data-exploration-and-analysis)
+    - [4.1 Dataset Overview](#41-dataset-overview)
+    - [4.2 Target Variable Creation](#42-target-variable-creation)
+    - [4.3 Data Quality Assessment](#43-data-quality-assessment)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
 
