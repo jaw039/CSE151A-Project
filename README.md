@@ -6,7 +6,7 @@
 
 - [1. Introduction 🏈](#1-introduction)
 - [2. Figures](#2-figures)
-- [3 Methods](#3-methods)
+- [3. Methods](#3-methods)
 - [7.1b Data Preprocessing Strategy and Model Development](#71b-data-preprocessing-strategy-and-model-development)
 - [7.2a Model 2 Performance Evolution](#72a-model-2-performance-evolution)
 - [7.3b Model Insights and Limitations](#73b-model-insights-and-limitations)
